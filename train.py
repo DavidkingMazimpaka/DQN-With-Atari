@@ -18,11 +18,11 @@ def create_env(render_mode=None):
 
 
 def main():
-    # Create directories for saving models and logs
+    # saving models and logs
     os.makedirs("models", exist_ok=True)
     os.makedirs("logs", exist_ok=True)
 
-    # Create and wrap the environment
+    # Create and wrap the env
     env = DummyVecEnv([lambda: create_env()])
 
     # Create evaluation environment
@@ -34,7 +34,7 @@ def main():
         env,
         learning_rate=1e-4,
         buffer_size=50000,  # Size of the replay buffer
-        learning_starts=1000,  # How many steps before starting training
+        learning_starts=1000,  # steps before starting training
         batch_size=32,
         gamma=0.99,  # Discount factor
         exploration_fraction=0.1,

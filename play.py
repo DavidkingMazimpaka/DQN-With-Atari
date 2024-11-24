@@ -5,7 +5,7 @@ import ale_py
 
 def main():
     gym.register_envs(ale_py)
-    # Create environment with rendering enabled
+    # env = gym.make("ALE/Breakout-v5")  # with rendering enabled
     env = gym.make("ALE/Breakout-v5", render_mode="human")
 
     # Load the trained model
@@ -25,7 +25,7 @@ def main():
         steps = 0
 
         while not done:
-            # Use the model to predict the best action (greedy policy)
+            # predicting the best action (greedy policy)
             action, _ = model.predict(obs, deterministic=True)
 
             # Take the action
