@@ -4,6 +4,7 @@ from stable_baselines3 import DQN
 from stable_baselines3.common.callbacks import CheckpointCallback, EvalCallback
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv
+from stable_baselines3.common.atari_wrappers import AtariWrapper
 import tensorflow as tf
 import ale_py
 
@@ -14,6 +15,7 @@ def create_env(render_mode=None):
     """Create and wrap the Breakout environment"""
     env = gym.make("ALE/Breakout-v5", render_mode=render_mode)
     env = Monitor(env)
+    env = AtariWrapper(env, screen_size=84)  # Adjusted to remove grayscale_obs
     return env
 
 
@@ -33,7 +35,7 @@ def main():
         "CnnPolicy",
         env,
         learning_rate=1e-4,
-        buffer_size=50000,  # Size of the replay buffer
+        buffer_size=10000,  # Size of the replay buffer
         learning_starts=1000,  # steps before starting training
         batch_size=32,
         gamma=0.99,  # Discount factor
