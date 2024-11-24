@@ -1,12 +1,28 @@
 import gymnasium as gym
 from stable_baselines3 import DQN
 import ale_py
+import numpy as np
+from gym import spaces
+from PIL import Image
+
+
+class CustomAtariWrapper(gym.ObservationWrapper):
+    def __init__(self, env):
+        super(CustomAtariWrapper, self).__init__(env)
+        # Define the observation space to match the expected shape
+        self.observation_space = spaces.Box(low=0, high=255, shape=(1, 84, 84), dtype=np.uint8)
+
+    def observation(self, obs):
+        img = Image.fromarray(obs)
+        img = img.convert('L')  # Convert to grayscale
+        img = img.resize((84, 84), Image.BILINEAR)
+        return np.array(img).astype(np.uint8).reshape(1, 84, 84)
 
 
 def main():
     gym.register_envs(ale_py)
-    # env = gym.make("ALE/Breakout-v5")  # with rendering enabled
     env = gym.make("ALE/Breakout-v5", render_mode="human")
+    env = CustomAtariWrapper(env)  # Wrap the environment
 
     # Load the trained model
     try:
@@ -25,7 +41,7 @@ def main():
         steps = 0
 
         while not done:
-            # predicting the best action (greedy policy)
+            # Predicting the best action (greedy policy)
             action, _ = model.predict(obs, deterministic=True)
 
             # Take the action
