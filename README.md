@@ -156,4 +156,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Atari and Breakout are trademarks of Atari Interactive Inc.
 
 ## Author
-- [kayongo Johnson Brian](https://github.com/kaybrian/)
+- [kayongo Johnson Brian](https://github.com/kaybrian/)# DQN-With-Atari
