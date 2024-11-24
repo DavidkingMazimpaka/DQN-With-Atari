@@ -5,7 +5,7 @@ This project implements a Deep Q-Network (DQN) agent to play Atari's Breakout ga
 ## Project Structure
 
 ```
-dqn-breakout/
+DQN-With-Atari/
 │
 ├── train.py          # Script for training the DQN agent
 ├── play.py           # Script for evaluating the trained agent
@@ -33,8 +33,8 @@ dqn-breakout/
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/kaybrian/DQN.git
-cd DQN
+git clone https://github.com/DavidkingMazimpaka/DQN-With-Atari.git
+cd DQN-With-Atari
 ```
 
 2. Create and activate a virtual environment (recommended):
@@ -156,4 +156,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Atari and Breakout are trademarks of Atari Interactive Inc.
 
 ## Author
-- [kayongo Johnson Brian](https://github.com/kaybrian/)# DQN-With-Atari
+- [KingDavid Mazimpaka](https://github.com/DavidkingMazimpaka/)
